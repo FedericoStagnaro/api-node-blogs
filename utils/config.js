@@ -1,6 +1,9 @@
 require('dotenv').config()
 
-const DATABASE_URL = process.env.DATABASE_URL
 const PORT = process.env.PORT
 
-module.exports = { DATABASE_URL, PORT }
+const MONGODB_URI = process.env.NODE_ENV === 'production'
+  ? process.env.DATABASE_URL
+  : process.env.TEST_DATABASE_URI
+
+module.exports = { MONGODB_URI, PORT }
