@@ -59,7 +59,6 @@ const getEntryLikesBlogs = (blogs) => {
 const mostLikes = (blogs) => {
   const entryList = getEntryLikesBlogs(blogs)
 
-  console.log(entryList)
   if (entryList.length > 0) {
     let mostLikes = { likes: 0 }
     entryList.forEach(entry => {

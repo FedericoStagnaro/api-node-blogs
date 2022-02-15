@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+require('dotenv').config()
 
 const mongoose = require('mongoose')
-const mongoUrl = require('./utils/config').DATABASE_URL
-const Blog = require('./models/blog')
+const mongoUrl = require('./utils/config').MONGODB_URI
 
 const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
