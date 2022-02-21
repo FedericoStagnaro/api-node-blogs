@@ -11,20 +11,20 @@ const middleware = require('./utils/middleware')
 const blogsRouter = require('./controllers/blogs')
 
 mongoose
-  .connect(mongoUrl)
-  .then(() => logger.info('database conected'))
+    .connect(mongoUrl)
+    .then(() => logger.info('database conected'))
 
 // ======================= MIDDLEWARES ================
 
 app.use(cors())
 app.use(express.json())
-app.use(middleware.requestLogger)
+// app.use(middleware.requestLogger)
 
 // ======================= END POINTS =================
 
 app.use('/api/blogs', blogsRouter) // controllers
 
-app.use(middleware.unknowEndpoint)
 app.use(middleware.errorHandler)
+app.use(middleware.unknowEndpoint)
 
 module.exports = app
