@@ -1,6 +1,4 @@
 const router = require('express').Router()
-const app = require('../app')
-const { request } = require('../app')
 const Blog = require('../models/blog')
 
 const messageNotFound = {
@@ -14,7 +12,7 @@ const messageContentMissing = {
 
 router.get('/', async (request, response, next) => {
     try {
-        const blogs = await Blog.find({})
+        const blogs = await Blog.find({}).populate('userId', { username: 1, name: 1 })
         blogs
             ? response.json(blogs)
             : next(messageNotFound)
